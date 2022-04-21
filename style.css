@@ -3,3 +3,82 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    /* position: relative; */
+    background-color: rgb(255, 234, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0 0 10px;
+    font-size: 1.8rem;
+}
+
+p:nth-child(2) {
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 5px 0 0 10px;
+}
+
+h2 {
+    text-align: center;
+    margin: 25px 0 0 10px;
+    font-size: 1.5rem;
+}
+
+.hands {
+    display: flex;
+    justify-content: space-around;
+    width: 70vw;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+}
+
+button {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 120px;
+    height: 50px;
+    border: solid 6px rgba(0, 0, 0, 0.762);
+    border-radius: 10%;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight: bolder;
+    margin-top: 50px;
+}
+
+.left-panel {
+    position: absolute;
+    width: 40%;
+    left: 10%;
+    transform: translate(0%, 100px);
+}
+
+.right-panel {
+    position: absolute;
+    width: 40%;
+    right: 10%;
+    transform: translate(0%, 100px);
+}
+
+.left-panel p,
+.right-panel p {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    color: yellow;
+    background-color: black;
+}
