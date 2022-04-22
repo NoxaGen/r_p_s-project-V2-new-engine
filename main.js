@@ -1,10 +1,10 @@
 const hands = [...document.querySelectorAll('.hands img')];
 const play = document.querySelector('button');
 
-const choices = {
-    player: '',
-    ai: '',
-};
+// const choices = {
+//     player: '',
+//     ai: '',
+// };
 
 const battle = {
     playerChoice: '',
@@ -19,15 +19,21 @@ const summary = {
     draws: 0,
 };
 
-// function checking players choice and updating battle status in left-panel
-
+// function checking players choice
 function playerHand() {
-
     hands.forEach(hand => hand.style.boxShadow = '');
     this.style.boxShadow = '0 10px 5px -5px black';
     battle.playerChoice = this.dataset.option;
-
+    document.querySelector('[data-result="choice"]').textContent = battle.playerChoice;
     console.log(battle.playerChoice);
 };
 
 hands.forEach(hand => hand.addEventListener('click', playerHand));
+
+// function works totaly random as ai choice
+function aiHand() {
+    const result = hands[Math.floor(Math.random() * 3)].dataset.option;
+    battle.aiChoice = result;
+    document.querySelector('[data-result="ai-choice"]').textContent = battle.aiChoice;
+    return result;
+}
