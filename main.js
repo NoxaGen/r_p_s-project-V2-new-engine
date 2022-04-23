@@ -4,7 +4,7 @@ const play = document.querySelector('button');
 const battle = {
     playerChoice: '',
     aiChoice: '',
-    winner: '',
+    result: '',
 };
 
 const summary = {
@@ -41,7 +41,7 @@ function startGame() {
     }
     console.log('Game is starting')
     aiHand();
-    battle.playerChoice = '';
+    // battle.playerChoice = '';
     hands.forEach(hand => hand.style.boxShadow = '');
     summary.games = summary.games + 1;
     document.querySelector('[data-summary="games"]').textContent = summary.games;
@@ -61,3 +61,29 @@ function showWinner(player, ai) {
         return 'loss';
     }
 };
+
+//function taking 3 arguments and publish final result and update score board
+function publishResult(player, ai, result) {
+    player = battle.playerChoice;
+    ai = battle.aiChoice;
+    result = showWinner(player, ai);
+
+    if (result === 'win') {
+        summary.wins = +summary.wins;
+        document.querySelector('[data-summary="wins"]').textContent = summary.wins;
+        document.querySelector('[data-result="battle-result"]').textContent = "Wygrywasz, gratulacje :)";
+        document.querySelector('[data-result="battle-result"]').style.color = "green";
+    } else if (result === 'loss') {
+        summary.loses = +summary.loses;
+        document.querySelector('[data-summary="loses"]').textContent = summary.loses;
+        document.querySelector('[data-result="battle-result"]').textContent = "Przykro mi, przegrywasz :("
+        document.querySelector('[data-result="battle-result"]').style.color = "red";
+    } else {
+        summary.draws = +summary.draws;
+        document.querySelector('[data-summary="draws"]').textContent = summary.draws;
+        document.querySelector('[data-result="battle-result"]').textContent = "Macie remis z AI!"
+        document.querySelector('[data-result="battle-result"]').style.color = "blue";
+
+    }
+
+}
