@@ -49,6 +49,15 @@ function startGame() {
 
 play.addEventListener('click', startGame);
 
-function publishResult(player, ai) {
-
-}
+// function wich comparing choice of ai vs player
+function showWinner(player, ai) {
+    if (player === ai) {
+        return 'draw';
+    } else if ((player === "papier" && ai === "kamień") ||
+        (player === "kamień" && ai === "nożyczki") ||
+        (player === "nożyczki" && ai === "papier")) {
+        return 'win';
+    } else {
+        return 'loss';
+    }
+};
