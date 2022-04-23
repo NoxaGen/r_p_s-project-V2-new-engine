@@ -87,3 +87,15 @@ function publishResult(player, ai, result) {
     }
 
 }
+
+
+function endGame() {
+    battle.playerChoice = '';
+    battle.aiChoice = '';
+    document.querySelector('[data-result="battle-result"]').textContent = ''
+    const finalResult = showWinner();
+    publishResult(battle.playerChoice, battle.aiChoice, finalResult)
+
+};
+
+endGame()
