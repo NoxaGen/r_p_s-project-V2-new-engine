@@ -33,8 +33,12 @@ function aiHand() {
     return result;
 }
 
-//function starts game after play button
+//function starts game after play button and check booleon is true
 function startGame() {
+    if (!battle.playerChoice) {
+        alert('Wybierz jedną z opcji!')
+        return;
+    }
     console.log('Game is starting')
     aiHand();
     battle.playerChoice = '';
@@ -44,3 +48,7 @@ function startGame() {
 }
 
 play.addEventListener('click', startGame);
+
+function publishResult(player, ai) {
+
+}
