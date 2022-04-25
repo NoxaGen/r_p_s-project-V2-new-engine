@@ -4,7 +4,6 @@ const play = document.querySelector('button');
 const battle = {
     playerChoice: '',
     aiChoice: '',
-    result: '',
 };
 
 const summary = {
@@ -14,10 +13,28 @@ const summary = {
     draws: 0,
 };
 
-// function checking players choice
-function playerHand() {
-    hands.forEach(hand => hand.style.boxShadow = '');
-    this.style.boxShadow = '0 10px 5px -5px black';
-    battle.playerChoice = this.dataset.option;
+//Funkcja odpowiadająca za wybór gracza, podświetlenie wyboru oraz przekazanie informacji do obiektu
 
-};
+function playerHand() {
+
+    hands.forEach(hand => {
+        hand.addEventListener('click', function () {
+            hand.style.boxShadow = "";
+            console.log(this.dataset.option);
+
+            hands.forEach(hand => {
+                hand.style.boxShadow = "";
+            })
+            this.style.boxShadow = "0 8px 2px -4px red";
+            battle.playerChoice = this.dataset.option;
+        })
+    });
+}
+
+//Funkcja sterująca programem w której umieszczone będą pokolei wszystkie funkcje
+
+playerHand()
+
+function gameEngine() {
+    playerHand()
+}
