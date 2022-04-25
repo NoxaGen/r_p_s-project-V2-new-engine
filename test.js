@@ -31,10 +31,25 @@ function playerHand() {
     });
 }
 
+// Funkcja która losowo generuje wybór AI i przekazuje go do obiektu
+
+function aiHand() {
+    const ai = hands[Math.floor(Math.random() * 3)].dataset.option;
+    battle.aiChoice = ai;
+}
+
+
+
+
 //Funkcja sterująca programem w której umieszczone będą pokolei wszystkie funkcje
 
-playerHand()
+
+
 
 function gameEngine() {
     playerHand()
+    aiHand()
 }
+
+
+gameEngine()
