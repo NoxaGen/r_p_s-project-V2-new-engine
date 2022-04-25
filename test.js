@@ -52,6 +52,55 @@ function checkResult(player, ai) {
     }
 }
 
+//Funkcja która potrzebuje trzech argumentów, pobiera je z obiektu i publikuje wyniki
+
+function publishResult(player, ai, result) {
+    summary.games++;
+    const playerChoice = document.querySelector('[data-result="choice"]');
+    const computerChoice = document.querySelector('[data-result="ai-choice"]');
+    const battleResult = document.querySelector('[data-result="battle-result"]');
+
+
+    //player
+    if (player === 'rock') {
+        playerChoice.textContent = "Kamień";
+    } else if (player === 'paper') {
+        playerChoice.textContent = "Papier";
+    } else {
+        playerChoice.textContent = "Nożyczki";
+    }
+
+    //ai
+
+    if (ai === 'rock') {
+        computerChoice.textContent = "Kamień";
+    } else if (ai === 'paper') {
+        computerChoice.textContent = "Papier";
+    } else {
+        computerChoice.textContent = "Nożyczki"
+    }
+
+    //battle result + summary
+
+    if (result === 'win') {
+        battleResult.textContent = "Ty wygrywasz! :)", battleResult.style.color = "green";
+        summary.wins++;
+    } else if (result === 'loss') {
+        battleResult.textContent = "Przegrywasz :(", battleResult.style.color = "red";
+        summary.loses++;
+    } else {
+        battleResult.textContent = "Remisujecie :/", battleResult.style.color = "gray";
+        summary.draws++;
+    }
+
+    //scoreboard 
+
+    document.querySelector('[data-summary="games"]') = summary.games;
+    document.querySelector('[data-summary="wins"]') = summary.wins;
+    document.querySelector('[data-summary="loses"]') = summary.loses;
+    document.querySelector('[data-summary="draws"]') = summary.draws;
+
+}
 
 //Funkcja sterująca programem w której umieszczone będą pokolei wszystkie funkcje
 
