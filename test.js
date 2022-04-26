@@ -14,23 +14,20 @@ const summary = {
     draws: 0
 };
 
+
 //Funkcja odpowiadająca za wybór gracza, podświetlenie wyboru oraz przekazanie informacji do obiektu
 
-function playerHand() {
+function playerHand(e) {
+    battle.playerChoice = e.target.dataset.option;
 
     hands.forEach(hand => {
-        hand.addEventListener('click', function () {
-            hand.style.boxShadow = "";
-            console.log('wybór gracza:' + this.dataset.option);
-
-            hands.forEach(hand => {
-                hand.style.boxShadow = "";
-            })
-            this.style.boxShadow = "0 8px 2px -4px red";
-            battle.playerChoice = this.dataset.option;
-        })
-    });
+        hand.style.boxShadow = ''
+    })
+    e.target.style.boxShadow = "0 8px 2px -4px red";
 }
+
+
+hands.forEach(hand => addEventListener('click', playerHand))
 
 // Funkcja która losowo generuje wybór AI i przekazuje go do obiektu
 
@@ -95,10 +92,10 @@ function publishResult(player, ai, result) {
 
     //scoreboard 
 
-    document.querySelector('[data-summary="games"]') = summary.games;
-    document.querySelector('[data-summary="wins"]') = summary.wins;
-    document.querySelector('[data-summary="loses"]') = summary.loses;
-    document.querySelector('[data-summary="draws"]') = summary.draws;
+    document.querySelector('[data-summary="games"]').textContent = summary.games;
+    document.querySelector('[data-summary="wins"]').textContent = summary.wins;
+    document.querySelector('[data-summary="loses"]').textContent = summary.loses;
+    document.querySelector('[data-summary="draws"]').textContent = summary.draws;
 
 }
 
@@ -108,11 +105,12 @@ function publishResult(player, ai, result) {
 
 
 function gameEngine() {
-    playerHand()
+    // playerHand()
     aiHand()
 
     battle.result = checkResult(battle.playerChoice, battle.aiChoice)
     console.log(battle.result)
+    publishResult(battle.playerChoice, battle.aiChoice, battle.result);
 
 }
 
