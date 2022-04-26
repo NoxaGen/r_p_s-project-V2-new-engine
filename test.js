@@ -27,14 +27,13 @@ function playerHand() {
 }
 
 
-hands.forEach(hand => hand.addEventListener('click', playerHand))
+
 
 // Funkcja która losowo generuje wybór AI i przekazuje go do obiektu
 
 function aiHand() {
     const ai = hands[Math.floor(Math.random() * 3)].dataset.option;
     battle.aiChoice = ai;
-    console.log('wybór AI:' + ai)
 }
 
 // Funkcja która porównuje wybór gracza z wyborem AI i zwraca wynik w formie stringa
@@ -107,11 +106,12 @@ function publishResult(player, ai, result) {
 function gameEngine() {
     // playerHand()
     aiHand()
-
+    if (!battle.playerChoice) {
+        return alert('Musisz wybrać opcję!')
+    }
     battle.result = checkResult(battle.playerChoice, battle.aiChoice)
-    console.log(battle.result)
     publishResult(battle.playerChoice, battle.aiChoice, battle.result);
 
 }
-
-gameEngine()
+hands.forEach(hand => hand.addEventListener('click', playerHand));
+play.addEventListener('click', gameEngine);
