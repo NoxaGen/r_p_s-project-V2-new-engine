@@ -15,7 +15,6 @@ const summary = {
 };
 
 //Function responsible for players show choice and send it to the object
-
 function playerHand() {
     battle.playerChoice = this.dataset.option;
 
@@ -26,14 +25,12 @@ function playerHand() {
 }
 
 // Function gives totaly random AI choice
-
 function aiHand() {
     const ai = hands[Math.floor(Math.random() * 3)].dataset.option;
     battle.aiChoice = ai;
 }
 
 // Function compares two options and give answer value in string wich its send to object
-
 function checkResult(player, ai) {
     if ((player === 'rock' && ai === 'rock') || (player === 'paper' && ai === 'paper') || (player === 'scissors' && ai === 'scissors')) {
         return 'draw';
@@ -45,7 +42,6 @@ function checkResult(player, ai) {
 }
 
 //Function wich requies three arguments (two choices and result of play) then publish all results on scoreboard
-
 function publishResult(player, ai, result) {
     summary.games++;
     const playerChoice = document.querySelector('[data-result="choice"]');
@@ -90,18 +86,25 @@ function publishResult(player, ai, result) {
 
 }
 
+// Function wich reset players choice in object and removing box shadows after game
+function endGame() {
+    battle.playerChoice = '';
+    hands.forEach(hand => {
+        hand.style.boxShadow = '';
+    })
+}
 
 //Function is kind of control panel wich calls every other functions in steps
-
 function gameEngine() {
-    // playerHand()
     aiHand()
     if (!battle.playerChoice) {
         return alert('Musisz wybrać opcję!')
     }
     battle.result = checkResult(battle.playerChoice, battle.aiChoice)
     publishResult(battle.playerChoice, battle.aiChoice, battle.result);
-
+    endGame()
 }
+
+// Event listeners set on hands and starting button
 hands.forEach(hand => hand.addEventListener('click', playerHand));
 play.addEventListener('click', gameEngine);
