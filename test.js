@@ -17,17 +17,17 @@ const summary = {
 
 //Funkcja odpowiadająca za wybór gracza, podświetlenie wyboru oraz przekazanie informacji do obiektu
 
-function playerHand(e) {
-    battle.playerChoice = e.target.dataset.option;
+function playerHand() {
+    battle.playerChoice = this.dataset.option;
 
     hands.forEach(hand => {
-        hand.style.boxShadow = ''
+        hand.style.boxShadow = '';
     })
-    e.target.style.boxShadow = "0 8px 2px -4px red";
+    this.style.boxShadow = "0 8px 2px -4px red";
 }
 
 
-hands.forEach(hand => addEventListener('click', playerHand))
+hands.forEach(hand => hand.addEventListener('click', playerHand))
 
 // Funkcja która losowo generuje wybór AI i przekazuje go do obiektu
 
