@@ -83,7 +83,6 @@ function publishResult(player, ai, result) {
     document.querySelector('[data-summary="wins"]').textContent = summary.wins;
     document.querySelector('[data-summary="loses"]').textContent = summary.loses;
     document.querySelector('[data-summary="draws"]').textContent = summary.draws;
-
 }
 
 // Function wich reset players choice in object and removing box shadows after game
