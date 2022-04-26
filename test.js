@@ -14,8 +14,7 @@ const summary = {
     draws: 0
 };
 
-
-//Funkcja odpowiadająca za wybór gracza, podświetlenie wyboru oraz przekazanie informacji do obiektu
+//Function responsible for players show choice and send it to the object
 
 function playerHand() {
     battle.playerChoice = this.dataset.option;
@@ -26,17 +25,14 @@ function playerHand() {
     this.style.boxShadow = "0 8px 2px -4px red";
 }
 
-
-
-
-// Funkcja która losowo generuje wybór AI i przekazuje go do obiektu
+// Function gives totaly random AI choice
 
 function aiHand() {
     const ai = hands[Math.floor(Math.random() * 3)].dataset.option;
     battle.aiChoice = ai;
 }
 
-// Funkcja która porównuje wybór gracza z wyborem AI i zwraca wynik w formie stringa
+// Function compares two options and give answer value in string wich its send to object
 
 function checkResult(player, ai) {
     if ((player === 'rock' && ai === 'rock') || (player === 'paper' && ai === 'paper') || (player === 'scissors' && ai === 'scissors')) {
@@ -48,14 +44,13 @@ function checkResult(player, ai) {
     }
 }
 
-//Funkcja która potrzebuje trzech argumentów, pobiera je z obiektu i publikuje wyniki
+//Function wich requies three arguments (two choices and result of play) then publish all results on scoreboard
 
 function publishResult(player, ai, result) {
     summary.games++;
     const playerChoice = document.querySelector('[data-result="choice"]');
     const computerChoice = document.querySelector('[data-result="ai-choice"]');
     const battleResult = document.querySelector('[data-result="battle-result"]');
-
 
     //player
     if (player === 'rock') {
@@ -67,7 +62,6 @@ function publishResult(player, ai, result) {
     }
 
     //ai
-
     if (ai === 'rock') {
         computerChoice.textContent = "Kamień";
     } else if (ai === 'paper') {
@@ -77,7 +71,6 @@ function publishResult(player, ai, result) {
     }
 
     //battle result + summary
-
     if (result === 'win') {
         battleResult.textContent = "Ty wygrywasz! :)", battleResult.style.color = "green";
         summary.wins++;
@@ -90,7 +83,6 @@ function publishResult(player, ai, result) {
     }
 
     //scoreboard 
-
     document.querySelector('[data-summary="games"]').textContent = summary.games;
     document.querySelector('[data-summary="wins"]').textContent = summary.wins;
     document.querySelector('[data-summary="loses"]').textContent = summary.loses;
@@ -98,10 +90,8 @@ function publishResult(player, ai, result) {
 
 }
 
-//Funkcja sterująca programem w której umieszczone będą pokolei wszystkie funkcje
 
-
-
+//Function is kind of control panel wich calls every other functions in steps
 
 function gameEngine() {
     // playerHand()
