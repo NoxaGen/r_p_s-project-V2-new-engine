@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS Game 2.0, new Engine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Gra Kamień, Papier, Nożyczki 2.0</h1>
+    <p>(Less CSS better JS and HTML)</p>
+    <h2>Zaznacz opcję i graj :)</h2>
+
+    <section class="hands">
+        <img src="./Images/rock.png" alt="kamień" data-option="rock" title="rock">
+        <img src="./Images/paper.png" alt="papier" data-option="paper" title="paper">
+        <img src="./Images/scissors.png" alt="nożyczki" data-option="scissors" title="scissors">
+    </section>
+
+    <button>GRAJ</button>
+
+    <section class="left-panel">
+        <h2>Podsumowanie starcia:</h1>
+            <p>Twój wybór: <span data-result="choice"></span></p>
+            <p>Wybór komputera: <span data-result="ai-choice"></span></p>
+            <h2>Obecne starcie wygrywa: <span data-result="battle-result"></span></h2>
+    </section>
+
+    <section class="right-panel">
+        <h2>Tabela Wyników:</h1>
+            <p>liczba gier: <span data-summary="games"></span></p>
+            <p>wygranych: <span data-summary="wins"></span></p>
+            <p>przegranych: <span data-summary="loses"></span></p>
+            <p>remisów: <span data-summary="draws"></span></p>
+    </section>
+
+    <footer>Wiktor Augustyniak Ⓒ NoxaGen</footer>
+    <script src="game.js"></script>
+</body>
+
+</html>
